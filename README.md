@@ -1,5 +1,7 @@
-Поставь node https://nodejs.org/en/ .
-npm -v .
+Поставь node https://nodejs.org/en/
+
+npm -v
+
 npm install
 
 
