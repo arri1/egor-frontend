@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React,{useState}from 'react';
+import img1 from './img/img1.jpg'
+import axios from 'axios'
+const App=()=> {
+  const [key,setKey]=useState(false)
+  const a ='hello egor'
+  const b ='hello gosha'
+  const onClick = ()=>{
+    axios.get('http://localhost:1337/answers')
+      .then(function (data) {
+        // handle success
+        console.log(data.data[0].text);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }
+  const secondFunc = ()=>{
+    setKey(!key)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {false?a:b}
+      <button onClick={onClick}>knopka</button>
+      {key?<img src={img1}/>:null}
     </div>
   );
 }
